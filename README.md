@@ -1,17 +1,24 @@
 # 🧑‍💼 Status Board App
 
-Status Board App is a full-stack web application for managing and displaying employee work statuses such as "Working", "Remote", "On Vacation", and others.  
-This project is containerized and orchestrated using Docker Compose, enabling seamless local development and testing.
+**Status Board App** is a full-stack web application for managing and displaying employee work statuses.  
+The available statuses are:
 
-It consists of the following components:
-- **Frontend**: React application for user login and status updates
-- **Backend**: FastAPI service providing authentication and API endpoints
-- **Database**: MongoDB for storing users and their statuses
-- **Seeder**: A service that loads user data from a CSV file and inserts it into MongoDB on startup
+- ✅ **Working**
+- 🏡 **Working Remotely**
+- 🌴 **On Vacation**
+- ✈️ **Business Trip**
+
+This project is containerized and orchestrated using **Docker Compose**, enabling seamless local development and testing.
 
 ---
-
 ## 📁 Project Structure
+
+This project is composed of the following components:
+
+- **Frontend**: React application for user login and status updates  
+- **Backend**: FastAPI service providing authentication and API endpoints  
+- **Database**: MongoDB for storing users and their statuses  
+- **Seeder**: A one-time service that loads user data from a CSV file and inserts it into MongoDB on startup  
 
 ## 📷 UI Screenshots
 
