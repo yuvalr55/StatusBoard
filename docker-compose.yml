@@ -1,0 +1,63 @@
+version: "3.8"
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: db_test
+    networks:
+      - shared-net
+  mongo-seed:
+    build:
+      context: ./seed
+      dockerfile: Dockerfile.seed
+    depends_on:
+      - mongodb
+    env_file:
+      - seed/.env
+    networks:
+      - shared-net
+    restart: "no"
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongodb
+    env_file:
+      - backend/.env
+    volumes:
+      - ./backend:/app
+    working_dir: /app
+    networks:
+      - shared-net
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - shared-net
+
+
+volumes:
+  mongo_data:
+
+networks:
+  shared-net:
+    driver: bridge

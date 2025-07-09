@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pymongo
+python-jose[cryptography]
+pydantic>=1.10.0
+passlib[bcrypt]
+dotenv
+cachetools>=5.0.0

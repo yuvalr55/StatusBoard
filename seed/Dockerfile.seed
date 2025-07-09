@@ -1,0 +1,11 @@
+FROM python:3.10
+
+WORKDIR /app
+
+COPY requirements.seed.txt .
+
+RUN pip install --no-cache-dir -r requirements.seed.txt
+
+COPY . .
+
+CMD ["python", "-u", "seed_users.py"]
